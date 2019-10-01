@@ -14,9 +14,13 @@ $('a').click(function(e) {
     // img.src = result["url"];
     // img.alt = result["author"];
     // img.title = result["title"];
-
+    
     var src = document.getElementById("image");
-    //src.appendChild(imgDiv);
+    var downloadURL = $('#image').css("background-image");
+
+
+
+
 
     });
 
