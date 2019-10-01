@@ -2,6 +2,18 @@ body, html {
     height: 100%;
 }
 
+#top {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+input#imageURL {
+    width: 50%;
+    height: 5%;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.1);
+}
+
 #image {
     /* Full height */
     height: 100%;
@@ -12,3 +24,51 @@ body, html {
     background-size: cover;
     overflow-y: hidden;
 }
+
+#smallerImgDiv {
+    text-align: center;
+    padding-top: 4rem; 
+}
+
+#smallerImg {
+    border-radius: 10px;
+    -moz-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+
+#smallerImg:hover {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20%;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+    -moz-box-shadow:    0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+    box-shadow:         0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+    opacity: 0.7;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
