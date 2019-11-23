@@ -26,11 +26,8 @@ $('a').click(function(e) {
             $('#overlayInfo').remove();
         }
 
-        var imgDiv = document.getElementById("image");
-        var downloadImg = document.getElementById("downloadImg");
         $('#image').css("background-image", "url(" + result["url"] + ")");
-        downloadImg.setAttribute('href', result['url']);
-
+        
         var img = document.createElement("IMG");
         img.src = result["url"];
         img.alt = result["author_name"];
@@ -43,7 +40,6 @@ $('a').click(function(e) {
         overlay.id = "overlay";
         var overlayInfo = document.createElement("DIV");
         overlayInfo.id ="overlayInfo";
-
         overlay.innerHTML = result["title"];
 
         overlay.class = "overlay";
