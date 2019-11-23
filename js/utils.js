@@ -14,58 +14,45 @@ $('a').click(function(e) {
         "Accept": "*/*",
         "Connection": "keep-alive",
         "Origin": "https://500px.com",
-        "Referer": "https://500px.com/popular/nude?sort=created_at&order=asc",
+        "Referer": "https://500px.com/popular",
         "Sec-Fetch-Mode": "no-cors"
     };
 
-    $.ajax({
-        "type": "GET",
-        "url": pxAPI2,
-        "beforeSend": function(request) {
-            request.setRequestHeader("Connection", "keep-alive");
-            request.setRequestHeader("Accept", "*/*");
-            request.setRequestHeader("Origin", "https://500px.com");
-            request.setRequestHeader("Referer", "https://500px.com/popular/nude?sort=created_at&order=asc");
-            request.setRequestHeader("Sec-Fetch-Mode", "no-cors");
-            request.setRequestHeader("x-csrf-token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MDIyMTI0IiwiaXNzIjoidSJ9.JHNc80mAHmAfRpZ9bgjoHKDVAdOgvoevBRwnV1lBSDo");
-          },
-        "success": function( result ) {
+    $.getJSON(pxAPI, function( result ) {
 
-            if ($('#smallerImg')) {
-                $('#smallerImg').remove();
-                $('#overlay').remove();
-                $('#overlayInfo').remove();
-            }
-
-            var imgDiv = document.getElementById("image");
-            $('#image').css("background-image", "url(" + result["url"] + ")");
-            var src = document.getElementById("image");
-            var downloadURL = $('#image').css("background-image");
-            var img = document.createElement("IMG");
-            img.src = result["url"];
-            img.alt = result["author_name"];
-            img.title = result["title"];
-            img.width = "300";
-            img.id = "smallerImg";
-            // img.style.display = "none";
-            var smallerImgDiv = document.getElementById("smallerImgDiv");
-
-
-            var overlay = document.createElement("DIV");
-            overlay.id = "overlay";
-            var overlayInfo = document.createElement("DIV");
-            overlayInfo.id ="overlayInfo";
-
-            overlay.innerHTML = result["title"];
-
-            overlay.class = "overlay";
-            overlayInfo.class = "text";
-
-            smallerImgDiv.append(img);
-            smallerImgDiv.append(overlay);
-            smallerImgDiv.append(overlayInfo);
+        if ($('#smallerImg')) {
+            $('#smallerImg').remove();
+            $('#overlay').remove();
+            $('#overlayInfo').remove();
         }
 
+        var imgDiv = document.getElementById("image");
+        var downloadImg = document.getElementById("downloadImg");
+        $('#image').css("background-image", "url(" + result["url"] + ")");
+        downloadImg.setAttribute('href', result['url']);
+
+        var img = document.createElement("IMG");
+        img.src = result["url"];
+        img.alt = result["author_name"];
+        img.title = result["title"];
+        img.width = "300";
+        img.id = "smallerImg";
+
+        var smallerImgDiv = document.getElementById("smallerImgDiv");
+        var overlay = document.createElement("DIV");
+        overlay.id = "overlay";
+        var overlayInfo = document.createElement("DIV");
+        overlayInfo.id ="overlayInfo";
+
+        overlay.innerHTML = result["title"];
+
+        overlay.class = "overlay";
+        overlayInfo.class = "text";
+
+        smallerImgDiv.append(img);
+        smallerImgDiv.append(overlay);
+        smallerImgDiv.append(overlayInfo);
+    
     });
 
     
